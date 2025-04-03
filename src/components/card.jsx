@@ -9,8 +9,10 @@ import { Clock, Ellipsis } from "lucide-react";
 import React from "react";
 
 export default function CardComponent() {
+
   return (
-    <div className="border border-gray-300 rounded-xl mt-8">
+    // {tasks.map((task) => (
+      <div className="border border-gray-300 rounded-xl mt-8">
       <div className="p-5">
         <div className="flex justify-between">
           <h2 className="text-xl font-bold capitalize">HRD Design</h2>
@@ -54,5 +56,7 @@ export default function CardComponent() {
         </p>
       </div>
     </div>
+    // ))}
+    
   );
 }

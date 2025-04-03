@@ -1,28 +1,37 @@
-
-
-// import { Button } from "@/components/ui/button";
-import Sidebar from "@/components/sidebar";
-import { getWorkspaces, setFavoriteStatus } from "../../../service/api-service";
+import { getWorkspaces } from "../../../service/api-service";
 import "../globals.css";
-import Logo from "@/components/logo";
+import SidebarComponent from "@/components/SideBarComponent";
 
 export default async function DashboardLayout({ children }) {
 
   const workspace = await getWorkspaces();
-  const favorite = await setFavoriteStatus();
+  // const favorite = await setFavoriteStatus();
 
   return (
     <>
-    <div className="flex h-screen bg-gray-50">
-      <Sidebar workspaces={workspace} favorites={favorite}/>
-      <div className="flex-1 flex flex-col">
-        {/* <TopNav /> */}
-        <main className="flex-1 overflow-auto">
-          {children}
-        </main>
-      </div>
-    </div>
+      <html lang="en">
+        <body>
+          <div className="flex h-screen bg-gray-50">
+            <SidebarComponent workspaces={workspace}/>
+            <div className="flex-1 flex flex-col overflow-hidden">
+              {/* <Header />
+          <TaskBoard /> */}
+              {children}
+            </div>
+          </div>
+        </body>
+      </html>
+
+
+
     </>
+    //   <div className="flex h-screen bg-gray-50">
+    //   <Sidebar />
+    //   <div className="flex-1 flex flex-col overflow-hidden">
+    //     <Header />
+    //     <TaskBoard />
+    //   </div>
+    // </div>
 
     // <html lang="en">
     //   <body className="text-charcoal w-full h-screen flex">
@@ -53,7 +62,7 @@ export default async function DashboardLayout({ children }) {
     //     </div>
     //   {/* </div> */}
 
-        
+
 
 
     //   </body>

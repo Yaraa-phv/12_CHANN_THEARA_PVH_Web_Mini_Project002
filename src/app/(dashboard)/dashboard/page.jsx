@@ -3,48 +3,29 @@
 // import Counter from "@/components/header";
 // import { auth } from "../../../../auth";
 
-import { redirect } from "next/navigation";
-import { auth } from "../../../../auth"
+// import { redirect } from "next/navigation";
+// import { auth } from "../../../../auth"
+// import SidebarComponent from "@/components/SideBarComponent";
+import HeaderCompoent from "@/components/HeaderComponent";
+import WorkspaceBoard from "@/components/WorkspaceBoard";
+import { getUsers } from "../../../../service/api-service";
 
 export default async function HomePage() {
 
-//   const session = await auth();
-//   // console.log("session : ", session.token.payload);
+  const users = await getUsers();
+  // console.log("User in page : ", users);
 
-//   console.log("session : ", session);
-
-// // Check if session and token exist before accessing payload
-// if (!session || !session.payload.token) {
-//   console.error("Session or token is undefined");
-//   redirect("/login");
-//   return;
-// }
-
-// // console.log("session payload: ", session.token.payload);
-
-// //   if(!session.token){
-// //     redirect("/login")
-// //   }
-//   // const session = await auth();
-//   // console.log("session : ", session);
 
   return (
 
     <>
-      <div className="w-full h-[100%]">
-        <div className="h-[10%] bg-red-900">
-          <div>
-            Hiiiii
-          {/* <Breadcrumbs /> */}
-          </div>
-          <div>
-
-          </div>
-        </div>
-        <div className="h-[90%] bg-yellow-200">
-
-        </div>
-      </div>
+      {/* <div className="flex h-screen bg-gray-50">
+      <SidebarComponent />
+      <div className="flex-1 flex flex-col overflow-hidden"> */}
+        <HeaderCompoent user={users}/>
+        <WorkspaceBoard />
+      {/* </div>
+    </div> */}
     </>
   )
 }

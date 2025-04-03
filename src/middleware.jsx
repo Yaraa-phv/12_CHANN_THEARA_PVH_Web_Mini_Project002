@@ -7,7 +7,7 @@ export async function middleware(req) {
 
   console.log("session : ", session);
   if(!session?.payload.token){
-    return NextResponse.redirect(new URL("/login", req.url))
+    return NextResponse.redirect(new URL("/register", req.url))
   }
 
   return NextResponse.next();
