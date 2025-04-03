@@ -5,45 +5,28 @@
 
 import { redirect } from "next/navigation";
 import { auth } from "../../../../auth"
+import CardComponent from "@/components/card";
+import TaskCard from "@/components/TaskCardComponent";
+import { getAllTaskbyWorkspaceId } from "../../../../service/api-service";
+import TopNav from "@/components/topnav";
 
-export default async function HomePage() {
+export default async function HomePage({ workspaceId }) {
 
-//   const session = await auth();
-//   // console.log("session : ", session.token.payload);
+  const task = await getAllTaskbyWorkspaceId({workspaceId});
 
-//   console.log("session : ", session);
-
-// // Check if session and token exist before accessing payload
-// if (!session || !session.payload.token) {
-//   console.error("Session or token is undefined");
-//   redirect("/login");
-//   return;
-// }
-
-// // console.log("session payload: ", session.token.payload);
-
-// //   if(!session.token){
-// //     redirect("/login")
-// //   }
-//   // const session = await auth();
-//   // console.log("session : ", session);
 
   return (
 
     <>
-      <div className="w-full h-[100%]">
-        <div className="h-[10%] bg-red-900">
-          <div>
-            Hiiiii
-          {/* <Breadcrumbs /> */}
-          </div>
-          <div>
+    <div className="w-full h-[100%] ">
+      <div className="m-auto w-[90%] h-[15%]">
+        <TopNav/>
+      </div>
 
-          </div>
-        </div>
-        <div className="h-[90%] bg-yellow-200">
-
-        </div>
+      <div className="m-auto w-[90%] h-[85%] grid grid-cols-4 gap-3 overflow-auto">
+        <TaskCard/>
+        {/* <CardComponent/> */}
+      </div>
       </div>
     </>
   )
