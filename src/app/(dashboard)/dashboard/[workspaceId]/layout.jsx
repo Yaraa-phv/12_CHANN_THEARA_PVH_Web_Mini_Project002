@@ -1,4 +1,3 @@
-import WorkspaceBoard from "@/components/WorkspaceBoard";
 
 export default async function WorkspaceLayout({children}) {
   

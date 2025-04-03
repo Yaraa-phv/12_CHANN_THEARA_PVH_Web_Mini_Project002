@@ -8,11 +8,11 @@
 // import SidebarComponent from "@/components/SideBarComponent";
 import HeaderCompoent from "@/components/HeaderComponent";
 import WorkspaceBoard from "@/components/WorkspaceBoard";
-import { getUsers } from "../../../../service/api-service";
+// import { getUsers } from "../../../../service/api-service";
 
 export default async function HomePage() {
 
-  const users = await getUsers();
+  // const users = await getUsers();
   // console.log("User in page : ", users);
 
 
@@ -22,7 +22,7 @@ export default async function HomePage() {
       {/* <div className="flex h-screen bg-gray-50">
       <SidebarComponent />
       <div className="flex-1 flex flex-col overflow-hidden"> */}
-        <HeaderCompoent user={users}/>
+        
         <WorkspaceBoard />
       {/* </div>
     </div> */}

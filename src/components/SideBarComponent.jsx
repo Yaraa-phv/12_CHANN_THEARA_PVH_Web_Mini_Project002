@@ -37,7 +37,7 @@ export default function SidebarComponent({ workspaces }) {
                 >
                   <span
                     style={{
-                      width: "12px",
+                      width: "12px",  
                       height: "12px",
                       borderRadius: "50%",
                       backgroundColor: colors[index % colors.length] || "#ccc",

@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { signIn } from "../auth";
+// import { signIn } from "../auth";
 import { registerService } from "../service/register-service";
 
 export const registerAction = async (formData) => {
