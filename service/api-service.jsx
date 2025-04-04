@@ -17,6 +17,22 @@ export async function getWorkspaces() {
   return res.json();
 }
 
+export async function getWorkspaceById( workspaceId ) {
+  const session = await auth();
+  const res = await fetch(
+    `http://96.9.81.187:8080/api/v1/workspace/${workspaceId}`,{
+      method:"GET",
+      headers:{
+        "accept": "*/*",
+        "Authorization": `Bearer ${session.payload.token}`
+      }
+    }
+  );
+  console.log("res in Workspace by Id : ", await res.json());
+  if (!res.ok) return("Failed to fetch workspaces by Id");
+  return res.json();
+}
+
 export async function getUsers() {
   const session = await auth();
   const res = await fetch(`http://96.9.81.187:8080/api/v1/user`, {

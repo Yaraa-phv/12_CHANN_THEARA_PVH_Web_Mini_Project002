@@ -1,33 +1,24 @@
-import HeaderCompoent from "@/components/HeaderComponent";
-import { getUsers, getWorkspaces } from "../../../service/api-service";
+import HeaderComponent from "@/components/HeaderComponent";
+import { getUsers, getWorkspaceById, getWorkspaces } from "../../../service/api-service";
 import "../globals.css";
 import SidebarComponent from "@/components/SideBarComponent";
-// import { useState } from "react";
 
-export default async function DashboardLayout({ children }) {
-  const workspace = await getWorkspaces();
+export default async function DashboardLayout({ children, params }) {
+  const workspaceId = (await params)?.workspaceId;
+  const workspaces = await getWorkspaces();
   const users = await getUsers();
-  
-  // const [selectedWorkspace, setSelectedWorkspace] = useState(workspace.payload[0]); // Default to the first workspace
-
-  // const handleWorkspaceSelect = (workspaceName) => {
-  //   const selected = workspace.payload.find(ws => ws.workspaceName === workspaceName);
-  //   setSelectedWorkspace(selected); // Update the selected workspace
-  // };
+  const currentWorkspace = await getWorkspaceById(workspaceId);
 
   return (
     <>
       <html lang="en">
         <body>
           <div className="flex h-screen bg-gray-50">
-            <SidebarComponent 
-              workspaces={workspace} 
-              // onWorkspaceSelect={handleWorkspaceSelect} 
-            />
+            <SidebarComponent workspaces={workspaces} />
             <div className="flex-1 flex flex-col overflow-hidden">
-              <HeaderCompoent 
+              <HeaderComponent 
                 user={users} 
-                // selectedWorkspace={selectedWorkspace} 
+                workspace={currentWorkspace}
               />
               {children}
             </div>
